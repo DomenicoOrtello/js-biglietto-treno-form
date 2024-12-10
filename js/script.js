@@ -8,9 +8,39 @@
 
 const name = document.getElementById("nome")
 const distance = document.getElementById("km")
-const Età = document.getElementById("età")
+const età = document.getElementById("età")
 const buttonGenera = document.getElementById("genera")
 const buttonAnnulla = document.getElementById("annulla")
 const prezzoPerKm = 0.21;
+const passeggeroOutput = document.getElementById("passeggero")
+const offertaOutput = document.getElementById("offerta")
+const carrozzaOutput = document.getElementById("carrozza")
+const capOutput = document.getElementById("cap")
+const prezzo_bigliettoOutput = document.getElementById("prezzo_biglietto")
+const ticket_passeggeroOutput = document.getElementById("ticket_passeggero")
 
 // Calcolo del biglietto
+genera.addEventListener("click", function(){
+    const carrozza = Math.floor(Math.random() * 13)
+    const cap = Math.floor(Math.random() * 100000) + 90000;
+    carrozzaOutput.innerHTML = carrozza
+    capOutput.innerHTML = cap
+    passeggeroOutput.innerHTML = name.value
+    offertaOutput.innerHTML = "Biglietto standard"
+    const finalTicket = ticket_passeggero.classList.remove("d-none")
+  
+  let prezzo = distance.value * prezzoPerKm;
+  if (età.value === "opzione2") {
+    prezzo -= prezzo * 0.20; 
+    offertaOutput.innerHTML = "Biglietto under 18"
+  }
+  if (età.value === "opzione3"){
+      prezzo -= prezzo * 0.40;
+      offertaOutput.innerHTML = "Biglietto over 65"
+  }
+  prezzo_bigliettoOutput.innerHTML = prezzo.toFixed(2)
+  });
+  
+  annulla.addEventListener("click", function(){
+    const finalTicket = ticket_passeggeroOutput.classList.add("d-none")
+  })
